@@ -29,6 +29,8 @@ void UResourceComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
+	GetWorld()->GetTimerManager().SetTimer(CollectionTimerHandle, this, &UResourceComponent::UpdateCollections, 0.1f, true, 0.f);
+
 	
 }
 
@@ -38,7 +40,6 @@ void UResourceComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	GetWorld()->GetTimerManager().SetTimer(CollectionTimerHandle, this, &UResourceComponent::UpdateCollections, 0.1f, true, 0.f);
 
 	// ...
 }

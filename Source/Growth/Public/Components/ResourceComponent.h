@@ -96,13 +96,13 @@ public:
 	}
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resources")
-	float GetCurrentSupply()
+	int32 GetCurrentSupply()
 	{
 		return CurrentSupply;
 	}
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resources")
-	float GetMaximumSupply()
+	int32 GetMaximumSupply()
 	{
 		return MaximumSupply;
 	}
