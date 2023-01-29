@@ -8,6 +8,8 @@
 
 #include "GrowthPlayerController.generated.h"
 
+
+
 /**
  * 
  */
@@ -20,6 +22,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UResourceComponent* ResourceComponent;
+	
 
 	AGrowthPlayerController();
 	

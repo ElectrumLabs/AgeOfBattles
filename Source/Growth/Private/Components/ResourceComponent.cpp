@@ -102,3 +102,50 @@ void UResourceComponent::DeltaMaximumSupply(int32 DeltaNum)
 	MaximumSupply += DeltaNum;
 }
 
+void UResourceComponent::HandleTransaction(TMap<ResourceType, float> ResourceMap)
+{
+	for (auto& Resource : ResourceMap)
+	{
+		switch(Resource.Key)
+		{
+		case ResourceType::Food: DeltaFood(Resource.Value);
+			break;
+
+		case ResourceType::Gold: DeltaGold(Resource.Value);
+			break;
+
+		case  ResourceType::Ore: DeltaOre(Resource.Value);	
+			break;
+
+		case ResourceType::Wood: DeltaWood(Resource.Value);
+			break;
+		}
+	}
+}
+
+bool UResourceComponent::bCheckIfCanAfford(TMap<ResourceType, float> ResourceMap)
+{
+	for (auto& Resource : ResourceMap)
+	{
+		switch(Resource.Key)
+		{
+		case ResourceType::Food:
+			if (Food < -Resource.Value) return false;
+			break;
+
+		case ResourceType::Gold: 
+			if (Gold < -Resource.Value) return false;
+			break;
+
+		case  ResourceType::Ore:
+			if (Ore < -Resource.Value) return false;
+			break;
+
+		case ResourceType::Wood:
+			if (Wood < -Resource.Value) return false;
+			break;
+		}
+	}
+	return true;
+}
+

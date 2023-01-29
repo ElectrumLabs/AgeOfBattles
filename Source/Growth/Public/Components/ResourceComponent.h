@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Growth/Growth.h"
+
 #include "ResourceComponent.generated.h"
 
 
@@ -132,5 +134,11 @@ public:
 	void DeltaCurrentSupply(int32 DeltaNum);
 	UFUNCTION(BlueprintCallable, Category = "Resources")
 	void DeltaMaximumSupply(int32 DeltaNum);
+
+	UFUNCTION(BlueprintCallable, Category = "Resources")
+	void HandleTransaction(TMap<ResourceType, float> ResourceMap);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resources")
+	bool bCheckIfCanAfford(TMap<ResourceType, float> ResourceMap);
 	
 };
