@@ -41,9 +41,13 @@ public:
 	// Sets default values for this component's properties
 	USendManager();
 
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+
+	const int32 QueueLimit = 5;
+
 
 public:	
 	// Called every frame
@@ -51,6 +55,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	TArray<FSendInformation> SendQueue;
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool CanAddToQueue();
 
 		
 };

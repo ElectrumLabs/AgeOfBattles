@@ -20,6 +20,8 @@ UResourceComponent::UResourceComponent()
 	GoldCollectionRate = 0.1;
 	Ore = 0.f;
 	OreCollectionRate = 0.f;
+
+	MaximumSupply = 5;
 }
 
 
@@ -102,7 +104,28 @@ void UResourceComponent::DeltaMaximumSupply(int32 DeltaNum)
 	MaximumSupply += DeltaNum;
 }
 
-void UResourceComponent::HandleTransaction(TMap<ResourceType, float> ResourceMap)
+void UResourceComponent::HandleBuy(TMap<ResourceType, float> ResourceMap)
+{
+	for (auto& Resource : ResourceMap)
+	{
+		switch(Resource.Key)
+		{
+		case ResourceType::Food: DeltaFood(-Resource.Value);
+			break;
+
+		case ResourceType::Gold: DeltaGold(-Resource.Value);
+			break;
+
+		case  ResourceType::Ore: DeltaOre(-Resource.Value);	
+			break;
+
+		case ResourceType::Wood: DeltaWood(-Resource.Value);
+			break;
+		}
+	}
+}
+
+void UResourceComponent::HandleSell(TMap<ResourceType, float> ResourceMap)
 {
 	for (auto& Resource : ResourceMap)
 	{
@@ -148,4 +171,11 @@ bool UResourceComponent::bCheckIfCanAfford(TMap<ResourceType, float> ResourceMap
 	}
 	return true;
 }
+
+bool UResourceComponent::bCheckIfSupplyFits(int32 IncomingSupply)
+{
+	return IncomingSupply + CurrentSupply <= MaximumSupply;
+}
+
+
 

@@ -32,3 +32,8 @@ void USendManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 	// ...
 }
 
+bool USendManager::CanAddToQueue()
+{
+	return SendQueue.Num() < QueueLimit;
+}
+

@@ -136,9 +136,15 @@ public:
 	void DeltaMaximumSupply(int32 DeltaNum);
 
 	UFUNCTION(BlueprintCallable, Category = "Resources")
-	void HandleTransaction(TMap<ResourceType, float> ResourceMap);
+	void HandleBuy(TMap<ResourceType, float> ResourceMap);
 
+	UFUNCTION(BlueprintCallable, Category = "Resources")
+	void HandleSell(TMap<ResourceType, float> ResourceMap);
+	
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resources")
 	bool bCheckIfCanAfford(TMap<ResourceType, float> ResourceMap);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resources")
+	bool bCheckIfSupplyFits(int32 IncomingSupply);
 	
 };

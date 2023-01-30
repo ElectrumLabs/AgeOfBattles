@@ -10,7 +10,7 @@ enum class ResourceType : uint8
 	Wood	UMETA(DisplayName = "Wood"),
 	Food	UMETA(DisplayName = "Food"),
 	Gold	UMETA(DisplayName = "Gold"),
-	Ore		UMETA(DisplayName = "Ore"),
+	Ore		UMETA(DisplayName = "Ore")
 };
 
 UENUM(BlueprintType)
@@ -33,6 +33,14 @@ enum class EFactionType : uint8
 {
 	Friendly		UMETA(DisplayName = "Friendly"),
 	Enemy			UMETA(DisplayName = "Enemy")
+};
+
+UENUM(BlueprintType)
+enum class ESendState : uint8
+{
+	Moving	UMETA(DisplayName = "Moving"),
+	Attacking	UMETA(DisplayName = "Attacking"),
+	Dying	UMETA(DisplayName = "Dying")
 };
 
 
