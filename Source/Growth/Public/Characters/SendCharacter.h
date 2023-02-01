@@ -77,12 +77,15 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
 	TMap<ResourceType, float> UnitTax;
 
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	float GoldBounty;
+
 
 	UFUNCTION(BlueprintCallable)
-	void HandleDamage(float IncomingDamage, float IncomingArmorPenetration);
+	void HandleDamage(float IncomingDamage, float IncomingArmorPenetration, ASendCharacter* InstigatingSend);
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void K2_PostDamageEvent(float FinalDamage);
+	void K2_PostDamageEvent(float FinalDamage, ASendCharacter* InstigatingSend);
 
 	UPROPERTY(BlueprintReadWrite)
 	ESendState SendState;
