@@ -14,7 +14,7 @@ ASendCharacter::ASendCharacter()
 	CurrentHealth = MaximumHealth;
 	SendState = ESendState::Moving;
 
-	AttackRange.Add(150.f);
+	AttackRange.Add(125.f);
 
 }
 
