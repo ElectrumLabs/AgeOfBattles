@@ -37,6 +37,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send ID Information")
 	FText UnitName;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send ID Information")
+	UTexture2D* UnitImage;
 	
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send ID Information")
 	FText UnitDescription;

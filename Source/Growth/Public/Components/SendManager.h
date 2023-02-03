@@ -17,6 +17,9 @@ struct FSendInformation : public FTableRowBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UTexture2D* UnitImage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TSubclassOf<class ASendCharacter>  SendCharacter;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
