@@ -43,5 +43,14 @@ enum class ESendState : uint8
 	Dying	UMETA(DisplayName = "Dying")
 };
 
+UENUM(BlueprintType)
+enum class EPurchaseState : uint8
+{
+	PurchaseSuccessful UMETA(Display = "Purchase Successful"),
+	NotEnoughResources UMETA(Display = "Not enough resources."),
+	NotEnoughSupply UMETA(Display = "Not enough supply."),
+	QueueIsFull UMETA(Display = "Queue is full.")
+};
+
 
 

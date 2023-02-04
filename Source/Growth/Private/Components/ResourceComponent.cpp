@@ -153,19 +153,19 @@ bool UResourceComponent::bCheckIfCanAfford(TMap<ResourceType, float> ResourceMap
 		switch(Resource.Key)
 		{
 		case ResourceType::Food:
-			if (Food < -Resource.Value) return false;
+			if (Food < Resource.Value) return false;
 			break;
 
 		case ResourceType::Gold: 
-			if (Gold < -Resource.Value) return false;
+			if (Gold < Resource.Value) return false;
 			break;
 
 		case  ResourceType::Ore:
-			if (Ore < -Resource.Value) return false;
+			if (Ore < Resource.Value) return false;
 			break;
 
 		case ResourceType::Wood:
-			if (Wood < -Resource.Value) return false;
+			if (Wood < Resource.Value) return false;
 			break;
 		}
 	}

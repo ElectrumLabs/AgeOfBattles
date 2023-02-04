@@ -41,7 +41,15 @@ void ASendCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 void ASendCharacter::HandleDamage(float IncomingDamage, float IncomingArmorPenetration, ASendCharacter* InstigatingSend)
 {
-	const float FinalDamage = IncomingDamage * (100 / 100 + Armor[0] - IncomingArmorPenetration);
+	float FinalDamage;
+	if (Armor[0] - IncomingArmorPenetration > 0)
+	{
+		FinalDamage = IncomingDamage * (100 / 100 + Armor[0] - IncomingArmorPenetration);
+	}
+	else
+	{
+		FinalDamage = IncomingDamage + IncomingArmorPenetration;
+	}
 
 	CurrentHealth -= FinalDamage;
 

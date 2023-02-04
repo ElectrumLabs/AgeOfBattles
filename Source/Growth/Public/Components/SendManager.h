@@ -20,6 +20,9 @@ struct FSendInformation : public FTableRowBase
 	UTexture2D* UnitImage;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FText SendName;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TSubclassOf<class ASendCharacter>  SendCharacter;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
@@ -61,6 +64,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool CanAddToQueue();
+
+	UPROPERTY(BlueprintReadWrite)
+	EFactionType FactionType;
 
 		
 };
