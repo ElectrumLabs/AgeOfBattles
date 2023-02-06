@@ -13,13 +13,13 @@ UResourceComponent::UResourceComponent()
 	// ...
 
 	Wood = 150.f;
-	WoodCollectionRate = 0.15;
+	WoodCollectionRate = 0.2;
 	Food = 200.f;
-	FoodCollectionRate = 0.2;
-	Gold = 100.f;
+	FoodCollectionRate = 0.25;
+	Gold = 50.f;
 	GoldCollectionRate = 0.1;
-	Ore = 0.f;
-	OreCollectionRate = 0.f;
+	Ore = 50.f;
+	OreCollectionRate = 0.15f;
 
 	MaximumSupply = 5;
 }
@@ -175,6 +175,92 @@ bool UResourceComponent::bCheckIfCanAfford(TMap<ResourceType, float> ResourceMap
 bool UResourceComponent::bCheckIfSupplyFits(int32 IncomingSupply)
 {
 	return IncomingSupply + CurrentSupply <= MaximumSupply;
+}
+
+bool UResourceComponent::HandleUpgrade(ResourceType ResourceToUpgrade)
+{
+	switch(ResourceToUpgrade)
+	{
+	case ResourceType::Food:
+		return HandleFoodUpgrade();
+
+	case ResourceType::Gold: 
+		return HandleGoldUpgrade();
+
+	case  ResourceType::Ore:
+		return HandleOreUpgrade();
+
+	case ResourceType::Wood:
+		return HandleWoodUpgrade();
+
+	default:
+		return false;
+	}
+}
+
+bool UResourceComponent::HandleFoodUpgrade()
+{
+	TMap<ResourceType, float> Prereq;
+	Prereq.Add(ResourceType::Wood, 50.f);
+	if (bCheckIfCanAfford(Prereq))
+	{
+		DeltaWood(-50.f);
+		DeltaFoodCollectionRate(0.2);
+		return true;
+	}
+	return false;
+}
+
+bool UResourceComponent::HandleGoldUpgrade()
+{
+	TMap<ResourceType, float> Prereq;
+	Prereq.Add(ResourceType::Ore, 50.f);
+	if (bCheckIfCanAfford(Prereq))
+	{
+		DeltaOre(-50.f);
+		DeltaGoldCollectionRate(0.2);
+		return true;
+	}
+	return false;
+}
+
+bool UResourceComponent::HandleWoodUpgrade()
+{
+	TMap<ResourceType, float> Prereq;
+	Prereq.Add(ResourceType::Food, 50.f);
+	if (bCheckIfCanAfford(Prereq))
+	{
+		DeltaFood(-50.f);
+		DeltaWoodCollectionRate(0.2);
+		return true;
+	}
+	return false;
+}
+
+bool UResourceComponent::HandleOreUpgrade()
+{
+	TMap<ResourceType, float> Prereq;
+	Prereq.Add(ResourceType::Gold, 50.f);
+	if (bCheckIfCanAfford(Prereq))
+	{
+		DeltaGold(-50.f);
+		DeltaOreCollectionRate(0.2);
+		return true;
+	}
+	return false;
+}
+
+bool UResourceComponent::HandleSupplyUpgrade()
+{
+	TMap<ResourceType, float> Prereq;
+	Prereq.Add(ResourceType::Wood, 50.f);
+	if (bCheckIfCanAfford(Prereq))
+	{
+		DeltaWood(-50.f);
+		DeltaMaximumSupply(5);
+		return true;
+	}
+	return false;
 }
 
 

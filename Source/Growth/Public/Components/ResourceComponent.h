@@ -146,5 +146,23 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resources")
 	bool bCheckIfSupplyFits(int32 IncomingSupply);
+
+	UFUNCTION(BlueprintCallable, Category = "Resource Upgrade")
+	bool HandleUpgrade(ResourceType ResourceToUpgrade);
+
+	UFUNCTION(Category = "Resource Upgrade")
+	bool HandleFoodUpgrade();
+	
+	UFUNCTION(Category = "Resource Upgrade")
+	bool HandleGoldUpgrade();
+
+	UFUNCTION(Category = "Resource Upgrade")
+	bool HandleWoodUpgrade();
+	
+	UFUNCTION(Category = "Resource Upgrade")
+	bool HandleOreUpgrade();
+
+	UFUNCTION(BlueprintCallable, Category = "Resource Upgrade")
+	bool HandleSupplyUpgrade();
 	
 };

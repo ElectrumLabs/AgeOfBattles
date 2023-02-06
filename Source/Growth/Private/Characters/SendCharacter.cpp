@@ -16,12 +16,25 @@ ASendCharacter::ASendCharacter()
 
 	AttackRange.Add(125.f);
 
+	AttackRangeLevel = 0;
+	AttackDamageLevel = 0;
+	AttackPenetrationLevel = 0;
+	ArmorLevel = 0;
+	AttackSpeedLevel = 0;
+
 }
 
 // Called when the game starts or when spawned
 void ASendCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	UpdateUpgradeLevels();
+
+	if (OwningUpgradeComponent)
+	{
+		OwningUpgradeComponent->OnUpgrade.AddDynamic(this, &ASendCharacter::UpdateUpgradeLevels);
+	}
 }
 
 
@@ -39,12 +52,24 @@ void ASendCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 }
 
+void ASendCharacter::UpdateUpgradeLevels()
+{
+	if (OwningUpgradeComponent)
+	{
+		AttackRangeLevel = OwningUpgradeComponent->ReturnAttackRangeLevel();
+		AttackDamageLevel = OwningUpgradeComponent->ReturnAttackDamageLevel();
+		AttackPenetrationLevel = OwningUpgradeComponent->ReturnAttackPenetrationLevel();
+		ArmorLevel = OwningUpgradeComponent->ReturnArmorLevel();
+		AttackSpeedLevel = OwningUpgradeComponent->ReturnAttackSpeedLevel();
+	}
+}
+
 void ASendCharacter::HandleDamage(float IncomingDamage, float IncomingArmorPenetration, ASendCharacter* InstigatingSend)
 {
 	float FinalDamage;
-	if (Armor[0] - IncomingArmorPenetration > 0)
+	if (Armor[ArmorLevel] - IncomingArmorPenetration > 0)
 	{
-		FinalDamage = IncomingDamage * (100 / 100 + Armor[0] - IncomingArmorPenetration);
+		FinalDamage = IncomingDamage * (100 / (100 + Armor[ArmorLevel] - IncomingArmorPenetration));
 	}
 	else
 	{

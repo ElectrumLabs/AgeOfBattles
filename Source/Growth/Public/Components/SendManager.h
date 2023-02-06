@@ -23,6 +23,9 @@ struct FSendInformation : public FTableRowBase
 	FText SendName;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	EUnitType UnitType;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TSubclassOf<class ASendCharacter>  SendCharacter;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)

@@ -52,5 +52,14 @@ enum class EPurchaseState : uint8
 	QueueIsFull UMETA(Display = "Queue is full.")
 };
 
+UENUM(BlueprintType)
+enum class UpgradeType : uint8
+{
+	AttackRange	UMETA(DisplayName = "AttackRange"),
+	AttackDamage	UMETA(DisplayName = "AttackDamage"),
+	AttackPenetration	UMETA(DisplayName = "AttackPenetration"),
+	Armor		UMETA(DisplayName = "Armor"),
+	AttackSpeed		UMETA(DisplayName = "AttackSpeed")
+};
 
 

@@ -22,8 +22,24 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UResourceComponent* ResourceComponent;
-	
 
-	AGrowthPlayerController();
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UUpgradesComponent* UpgradesComponent;
 	
+	AGrowthPlayerController();
+
+	UFUNCTION(BlueprintPure, BlueprintCallable)
+	bool BCanUpgradeAttackRange();
+
+	UFUNCTION(BlueprintPure, BlueprintCallable)
+	bool BCanUpgradeAttackDamage();
+
+	UFUNCTION(BlueprintPure, BlueprintCallable)
+	bool BCanUpgradeAttackPenetration();
+
+	UFUNCTION(BlueprintPure, BlueprintCallable)
+	bool BCanUpgradeAttackSpeed();
+
+	UFUNCTION(BlueprintPure, BlueprintCallable)
+	bool BCanUpgradeArmor();
 };
