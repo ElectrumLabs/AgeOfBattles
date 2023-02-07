@@ -24,6 +24,9 @@ struct FSendInformation : public FTableRowBase
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	EUnitType UnitType;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int32 UnitTier = 1;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TSubclassOf<class ASendCharacter>  SendCharacter;
@@ -37,7 +40,31 @@ struct FSendInformation : public FTableRowBase
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
 	TMap<ResourceType, float> ResourceCost;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	float MaximumHealth;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	TArray<float> AttackRange;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	TArray<float> AttackDamage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	TArray<float> AttackPenetration;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	TArray<float> Armor;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	TArray<float> AttackSpeed;
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	TMap<ResourceType, float> UnitTax;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Cost Information")
+	float GoldBounty;
+
 };
 
 

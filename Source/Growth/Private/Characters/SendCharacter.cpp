@@ -21,6 +21,7 @@ ASendCharacter::ASendCharacter()
 	AttackPenetrationLevel = 0;
 	ArmorLevel = 0;
 	AttackSpeedLevel = 0;
+	SupplyCost = 1;
 
 }
 

@@ -55,43 +55,47 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Send ID Information", meta = (ExposeOnSpawn="true"))
 	EUnitType UnitType;
 
+	UPROPERTY(BlueprintReadWrite, Category = "Send ID Information", meta = (ExposeOnSpawn="true"))
+	int32 UnitTier;
+
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send ID Information")
 	EWeaponType WeaponType;
 	
 
 
-	//  Character vitals
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Send Information")
+	//  @TODO:  MAKE ALL OF THIS INTO THE SEND MANAGER STRUCT, AND EXPOSEONSPAWN
+	//  Character vitals  *
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information")
 	float CurrentHealth;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	float MaximumHealth;
 	
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	TArray<float> AttackRange;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Send Information")
 	int32 AttackRangeLevel;
 	
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	TArray<float> AttackDamage;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Send Information")
 	int32 AttackDamageLevel;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	TArray<float> AttackPenetration;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Send Information")
 	int32 AttackPenetrationLevel;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	TArray<float> Armor;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Send Information")
 	int32 ArmorLevel;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	TArray<float> AttackSpeed;
 	
 	UPROPERTY(BlueprintReadWrite, Category = "Send Information")
@@ -100,13 +104,15 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	EFactionType FactionType;
 	
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	TMap<ResourceType, float> UnitTax;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Send Information")
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
 	float GoldBounty;
 
-
+	UPROPERTY(BlueprintReadWrite, Category = "Send Information", meta = (ExposeOnSpawn="true"))
+	int32 SupplyCost;
+	
 	UFUNCTION(BlueprintCallable)
 	void HandleDamage(float IncomingDamage, float IncomingArmorPenetration, ASendCharacter* InstigatingSend);
 
