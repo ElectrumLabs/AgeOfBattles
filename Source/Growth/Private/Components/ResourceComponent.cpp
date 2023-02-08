@@ -12,13 +12,13 @@ UResourceComponent::UResourceComponent()
 
 	// ...
 
-	Wood = 150.f;
+	Wood = 50.f;
 	WoodCollectionRate = 0.2;
-	Food = 200.f;
+	Food = 100.f;
 	FoodCollectionRate = 0.25;
-	Gold = 50.f;
+	Gold = 10.f;
 	GoldCollectionRate = 0.1;
-	Ore = 50.f;
+	Ore = 10.f;
 	OreCollectionRate = 0.15f;
 
 	MaximumSupply = 5;
