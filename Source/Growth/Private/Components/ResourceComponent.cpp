@@ -22,6 +22,8 @@ UResourceComponent::UResourceComponent()
 	OreCollectionRate = 0.15f;
 
 	MaximumSupply = 5;
+	CurrentBaseHealth = 500;
+	MaximumBaseHealth = 500;
 }
 
 
@@ -254,13 +256,25 @@ bool UResourceComponent::HandleSupplyUpgrade()
 {
 	TMap<ResourceType, float> Prereq;
 	Prereq.Add(ResourceType::Wood, 50.f);
-	if (bCheckIfCanAfford(Prereq))
+	if (bCheckIfCanAfford(Prereq) && !BIsSupplyCapped())
 	{
 		DeltaWood(-50.f);
 		DeltaMaximumSupply(5);
+		CurrentBaseHealth += 100;
+		MaximumBaseHealth += 100;
 		return true;
 	}
 	return false;
+}
+
+bool UResourceComponent::BIsSupplyCapped()
+{
+	return GetMaximumSupply() >= 50;
+}
+
+void UResourceComponent::DeltaCurrentBaseHealth(float Delta)
+{
+	CurrentBaseHealth += Delta;
 }
 
 

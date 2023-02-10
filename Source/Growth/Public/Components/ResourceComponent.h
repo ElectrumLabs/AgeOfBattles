@@ -29,6 +29,9 @@ private:
 
 	float Ore;
 	float OreCollectionRate;
+	
+	float CurrentBaseHealth;
+	float MaximumBaseHealth;
 
 public:	
 	// Sets default values for this component's properties
@@ -164,5 +167,22 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Resource Upgrade")
 	bool HandleSupplyUpgrade();
-	
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Resource Upgrade")
+	bool BIsSupplyCapped();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	float ReturnCurrentBaseHealth()
+	{
+		return CurrentBaseHealth;
+	}
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	float ReturnMaximumBaseHealth()
+	{
+		return MaximumBaseHealth;
+	}
+
+	UFUNCTION(BlueprintCallable)
+	void DeltaCurrentBaseHealth(float Delta);
 };
