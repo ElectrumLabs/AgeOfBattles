@@ -3,6 +3,7 @@
 
 #include "Characters/SendCharacter.h"
 
+#include "Components/ArrowComponent.h"
 #include "Components/SphereComponent.h"
 
 // Sets default values
@@ -10,8 +11,6 @@ ASendCharacter::ASendCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
-	CurrentHealth = MaximumHealth;
 	SendState = ESendState::Moving;
 
 	AttackRange.Add(125.f);
@@ -22,6 +21,8 @@ ASendCharacter::ASendCharacter()
 	ArmorLevel = 0;
 	AttackSpeedLevel = 0;
 	SupplyCost = 1;
+
+	GetArrowComponent()->SetVisibility(false);
 
 }
 
@@ -36,6 +37,9 @@ void ASendCharacter::BeginPlay()
 	{
 		OwningUpgradeComponent->OnUpgrade.AddDynamic(this, &ASendCharacter::UpdateUpgradeLevels);
 	}
+
+	CurrentHealth = MaximumHealth;
+
 }
 
 
