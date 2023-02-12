@@ -22,8 +22,8 @@ UResourceComponent::UResourceComponent()
 	OreCollectionRate = 0.15f;
 
 	MaximumSupply = 5;
-	CurrentBaseHealth = 500;
-	MaximumBaseHealth = 500;
+	CurrentBaseHealth = 100;
+	MaximumBaseHealth = 100;
 }
 
 
@@ -54,11 +54,13 @@ void UResourceComponent::UpdateCollections()
 	DeltaFood(FoodCollectionRate);
 	DeltaGold(GoldCollectionRate);
 	DeltaOre(OreCollectionRate);
+
+	UE_LOG(LogTemp, Warning, TEXT("asdf"));
 }
 
 void UResourceComponent::DeltaWood(float DeltaNum)
 {
-	Wood += DeltaNum;
+	Wood = FMath::Clamp((Wood + DeltaNum), 0, 999999);
 }
 
 void UResourceComponent::DeltaWoodCollectionRate(float DeltaNum)
@@ -68,7 +70,7 @@ void UResourceComponent::DeltaWoodCollectionRate(float DeltaNum)
 
 void UResourceComponent::DeltaFood(float DeltaNum)
 {
-	Food += DeltaNum;
+	Food = FMath::Clamp((Food + DeltaNum), 0, 999999);
 }
 
 void UResourceComponent::DeltaFoodCollectionRate(float DeltaNum)
@@ -78,7 +80,7 @@ void UResourceComponent::DeltaFoodCollectionRate(float DeltaNum)
 
 void UResourceComponent::DeltaGold(float DeltaNum)
 {
-	Gold += DeltaNum;
+	Gold = FMath::Clamp((Gold + DeltaNum), 0, 999999);
 }
 
 void UResourceComponent::DeltaGoldCollectionRate(float DeltaNum)
@@ -88,7 +90,7 @@ void UResourceComponent::DeltaGoldCollectionRate(float DeltaNum)
 
 void UResourceComponent::DeltaOre(float DeltaNum)
 {
-	Ore += DeltaNum;
+	Ore = FMath::Clamp((Ore + DeltaNum), 0, 999999);
 }
 
 void UResourceComponent::DeltaOreCollectionRate(float DeltaNum)
@@ -103,7 +105,7 @@ void UResourceComponent::DeltaCurrentSupply(int32 DeltaNum)
 
 void UResourceComponent::DeltaMaximumSupply(int32 DeltaNum)
 {
-	MaximumSupply += DeltaNum;
+	MaximumSupply = FMath::Clamp((MaximumSupply + DeltaNum), 0, 50);
 }
 
 void UResourceComponent::HandleBuy(TMap<ResourceType, float> ResourceMap)

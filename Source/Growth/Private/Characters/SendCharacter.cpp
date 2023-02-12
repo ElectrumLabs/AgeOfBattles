@@ -22,7 +22,7 @@ ASendCharacter::ASendCharacter()
 	AttackSpeedLevel = 0;
 	SupplyCost = 1;
 
-	GetArrowComponent()->SetVisibility(false);
+	//  GetArrowComponent()->SetVisibility(false);
 
 }
 
