@@ -18,4 +18,8 @@ Kenney Game Assets
 
 Downrain DC -- Hero Series - Modular Hero
 
-Heavily inspired by the Age of War series by Louissi.​
+Heavily inspired by the Age of War series by Louissi.
+
+Play here:  
+https://electrumlabs.itch.io/age-of-battles
+​
